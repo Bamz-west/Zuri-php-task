@@ -64,25 +64,25 @@ function loginuser($dbconn){
         header("location: dashboard.php");
 }
 
-function showcustomers($dbconn) {
+// function showcustomers($dbconn) {
     
-    $stmt= $dbconn->prepare("SELECT * FROM Customer");
+//     $stmt= $dbconn->prepare("SELECT * FROM Customer");
 
-    $stmt->execute();
+//     $stmt->execute();
 
-    # Keep Fetching a single record till there is none left  
-    while($record = $stmt->fetch(PDO::FETCH_ASSOC)) {
+//     # Keep Fetching a single record till there is none left  
+//     while($record = $stmt->fetch(PDO::FETCH_ASSOC)) {
 
-        echo ' <tr>
-                <td>'.$record['Id'].'</td>
-                <td>'.$record['first_name'].'</td>
-                <td>'.$record['last_name'].'</td>
-                <td>'.$record['username'].'</td>
-                <td>'.$record['email'].'</td>
-            </tr>';
+//         echo ' <tr>
+//                 <td>'.$record['Id'].'</td>
+//                 <td>'.$record['first_name'].'</td>
+//                 <td>'.$record['last_name'].'</td>
+//                 <td>'.$record['username'].'</td>
+//                 <td>'.$record['email'].'</td>
+//             </tr>';
 
-    }
+//     }
 
-}
+// }
 
 ?>

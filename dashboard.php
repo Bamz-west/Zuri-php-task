@@ -16,7 +16,11 @@ if(!isset($_SESSION['customer_id'])){
 </head>
 <body>
     <a href="dashboard.php">Home</a>
-    <a href="view_users.php">View users</a>
+    <!-- <a href="view_users.php">View users</a> -->
+    <a href="view_course.php">View Courses</a>
+    <a href="add_course.php">Add Course</a>
+    <a href="edit_course.php">Edit Course</a>
+    <a href="delete_course.php">Delete Course</a>
 
     <h1>Welcome <?php echo $_SESSION['firstname']; ?></h1>
 </body>
