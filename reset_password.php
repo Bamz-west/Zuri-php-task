@@ -1,5 +1,4 @@
 <?php
-session_start();
 
 # Import database
 include 'includes/db.php';
@@ -17,12 +16,13 @@ if(array_key_exists('submit',$_POST)){
     if(empty($_POST['password'])){
         $errors['password']="Please enter your Password";
     }
+    if(empty($_POST['confirm_password']) || $_POST['password'] !== $_POST['comfirm_password']){
+        $errors['confirm_password']="Please enter your correct password";
+    }
 
     # If everything is ok
     if(empty($errors)){
-
-        loginuser($conn);
-
+        resetpassword($conn);
     }
 }
 
@@ -54,11 +54,13 @@ if(array_key_exists('submit',$_POST)){
         <?php displayerrors($errors, 'password'); ?>
         <label for="password">Password :</label>
         <input type="password" name="password"><br/>
+
+        <?php displayerrors($errors, 'confirm_password'); ?>
+        <label for="confirm_password">Confirm password :</label>
+        <input type="password" name="confirm_password"><br/>
         
 
-        <input type="submit" name="submit" value="login"><br/>
-
-        <p><a href="reset_password.php">Forgot your password?</a></p>
+        <input type="submit" name="submit" value="Reset Password"><br/>
     
     </form>
 </body>

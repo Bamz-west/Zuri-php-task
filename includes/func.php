@@ -64,6 +64,39 @@ function loginuser($dbconn){
         header("location: dashboard.php");
 }
 
+function resetpassword($dbconn) {
+
+  $stmt = $dbconn->prepare("SELECT * from Customer WHERE email=:e");
+
+  $data = [
+    ":e" => $_POST['email']
+  ];
+
+  $stmt->execute($data);
+
+  if($stmt->rowCount() != 1) {
+    $msg = "This user does not exist";
+    return header("location: login.php?m=$msg");
+  }
+
+  $record = $stmt->fetch(PDO::FETCH_ASSOC);
+
+
+  $stmt = $dbconn->prepare("UPDATE into Customer(password) VALUES(:p)");
+
+  $hash = password_hash($_POST['password'], PASSWORD_BCRYPT);
+
+  $data = [
+    "p" => $hash
+  ];
+
+
+  $stmt->execute($data);
+
+  header("location: login.php");
+
+}
+
 // function showcustomers($dbconn) {
     
 //     $stmt= $dbconn->prepare("SELECT * FROM Customer");

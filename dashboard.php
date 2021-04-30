@@ -23,5 +23,6 @@ if(!isset($_SESSION['customer_id'])){
     <a href="delete_course.php">Delete Course</a>
 
     <h1>Welcome <?php echo $_SESSION['firstname']; ?></h1>
+    <a href="logout.php">Clich here to logout</a>
 </body>
 </html>
